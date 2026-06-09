@@ -1,0 +1,29 @@
+{
+  "name": "gpusmarket",
+  "version": "2.0.0",
+  "description": "Rent GPUs from the terminal. Agent-first CLI for GPUsMarket — signup, rent, chat, pool, all from one command.",
+  "bin": {
+    "gpusmarket": "bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "gpu", "rent", "ai", "inference", "ollama", "openai", "llm",
+    "cli", "agent", "marketplace", "gpu-rental", "cursor", "cline", "aider"
+  ],
+  "author": "Joe Wee <joe@tyga.cloud>",
+  "license": "SEE LICENSE IN LICENSE",
+  "copyright": "Copyright (c) 2026 Tyga.Cloud Ltd",
+  "homepage": "https://gpusmarket.com"
+}
