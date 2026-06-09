@@ -1,6 +1,7 @@
 node_modules/
 src/
 dist/
+bin/
 scripts/
 lib/
 tests/
@@ -8,3 +9,4 @@ tests/
 .DS_Store
 *.log
 *.tgz
+CLAUDE.md
