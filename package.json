@@ -1,6 +1,6 @@
 {
   "name": "gpusmarket",
-  "version": "2.3.2",
+  "version": "2.4.0",
   "description": "Rent GPUs from the terminal. Agent-first CLI for GPUsMarket — signup, rent, chat, pool, all from one command.",
   "bin": {
     "gpusmarket": "bin/cli.js"
