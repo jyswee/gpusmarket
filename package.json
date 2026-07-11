@@ -1,7 +1,7 @@
 {
   "name": "gpusmarket",
-  "version": "2.4.0",
-  "description": "Rent GPUs from the terminal. Agent-first CLI for GPUsMarket — signup, rent, chat, pool, all from one command.",
+  "version": "2.4.1",
+  "description": "Rent real GPUs from the terminal. Agent-first CLI + built-in MCP server for GPUsMarket — signup, rent, chat, pool. Per-second billing, no minimum charge.",
   "bin": {
     "gpusmarket": "bin/cli.js"
   },
@@ -32,7 +32,12 @@
     "gpu-rental",
     "cursor",
     "cline",
-    "aider"
+    "aider",
+    "mcp",
+    "mcp-server",
+    "claude-code",
+    "windsurf",
+    "copilot"
   ],
   "author": "Joe Wee <joe@tyga.cloud>",
   "license": "SEE LICENSE IN LICENSE",
