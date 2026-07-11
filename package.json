@@ -1,6 +1,6 @@
 {
   "name": "gpusmarket",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "Rent real GPUs from the terminal. Agent-first CLI + built-in MCP server for GPUsMarket — signup, rent, chat, pool. Per-second billing, no minimum charge.",
   "bin": {
     "gpusmarket": "bin/cli.js"
