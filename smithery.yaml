@@ -1,0 +1,10 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      apiKey:
+        type: string
+        description: GPUsMarket API key (gpu_...). Optional to connect; the server needs one at call time to rent/run. Get one with 'gpusmarket signup' or from your dashboard at https://gpusmarket.com.
+  commandFunction: |-
+    (config) => ({ command: "gpusmarket", args: ["mcp-serve"], env: { GPUSMARKET_API_KEY: config.apiKey } })

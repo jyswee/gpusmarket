@@ -1,0 +1,38 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "name": "io.github.jyswee/gpusmarket",
+  "description": "Rent real GPUs from the terminal. Signup, search, rent, run inference, pool. Per-second billing, $0.50 minimum per rental. stdio MCP server.",
+  "repository": {
+    "url": "https://github.com/jyswee/gpusmarket",
+    "source": "github"
+  },
+  "version": "2.4.6",
+  "websiteUrl": "https://gpusmarket.com",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "gpusmarket",
+      "version": "2.4.6",
+      "transport": {
+        "type": "stdio"
+      },
+      "runtimeHint": "npx",
+      "runtimeArguments": [
+        {
+          "type": "positional",
+          "value": "mcp-serve",
+          "isRequired": true
+        }
+      ],
+      "environmentVariables": [
+        {
+          "name": "GPUSMARKET_API_KEY",
+          "description": "GPUsMarket API key (gpu_...). Required: the MCP server exits without one. Get a key with 'gpusmarket signup' or from your dashboard.",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
