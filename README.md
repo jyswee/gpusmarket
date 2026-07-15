@@ -4,14 +4,21 @@
 
 [![npm version](https://img.shields.io/npm/v/gpusmarket?color=cb3837&logo=npm)](https://www.npmjs.com/package/gpusmarket)
 [![MCP — 32 tools](https://img.shields.io/badge/MCP-32%20tools-6E56CF?logo=modelcontextprotocol&logoColor=white)](#mcp-server)
+[![Agent-native](https://img.shields.io/badge/agent-native-f97316)](#built-for-agents)
 [![smithery badge](https://smithery.ai/badge/jyswee/gpusmarket)](https://smithery.ai/servers/jyswee/gpusmarket)
 
 One command to sign up, one to rent, one to run inference. Per-second billing, no subscriptions, $0.50 minimum per rental. The CLI your coding agent can drive end-to-end: [GPUsMarket](https://gpusmarket.com).
+
+> **`npm install` for GPUs. One command in, one command out.**
+
+Renting a GPU usually means a signup form, a quota request, a support ticket, and a $50 minimum — before you've run a single token. GPUsMarket collapses that to three commands: everything from consumer RTX 4090s to datacenter H100s and MI300Xs, rentable by the second. And it's built so your **agent can sign up and rent by itself** — no human, no browser, no dashboard.
 
 **Works with:** Claude Code · Cursor · Cline · Windsurf · Aider · Codex · any MCP client
 
 <!-- HERO: money loop — install → signup → search → rent → chat (real inference) → stop → per-second bill -->
 [![gpusmarket demo](https://prodmedia.tyga.host/public/tyga.cloud/landing/gpusmarket.com/cli/hero-stitched.gif)](https://prodmedia.tyga.host/public/tyga.cloud/landing/gpusmarket.com/cli/hero-stitched.mp4)
+
+*Install to real inference in under a minute — [watch the full-res demo](https://prodmedia.tyga.host/public/tyga.cloud/landing/gpusmarket.com/cli/hero-stitched.mp4).*
 
 ```bash
 npm install -g gpusmarket
@@ -39,12 +46,18 @@ gpusmarket stop RENTAL-ID
 
 ## Built for agents
 
-This CLI is designed to be driven by AI coding agents (Claude Code, Cursor, Cline, Windsurf, Codex, Copilot), not just humans.
+**Built so an agent can go from zero to running inference with no human in the loop** — sign up, rent, infer, and stop, all from the terminal or over MCP. This CLI is designed to be driven by AI coding agents (Claude Code, Cursor, Cline, Windsurf, Codex, Copilot), not just humans.
 
 - **`gpusmarket init`** — in-terminal quickstart: detects your agent's config file, prints a ready-to-paste skill block, MCP setup, and next steps.
 - **`gpusmarket init --agent-schema`** — the full command contract as JSON: every command, every flag, plus the rules agents must follow. Load it into context and your agent never hallucinates a flag.
 - **`--json` everywhere** — every command has machine-readable output.
 - **Zero dependencies** — a single self-contained Node.js CLI. Nothing to audit but us.
+
+**Watch an agent drive it end-to-end** (click for the full-res video):
+
+[![agent drives gpusmarket via MCP](https://prodmedia.tyga.host/public/tyga.cloud/landing/gpusmarket.com/cli/claude-code-stitched.gif)](https://prodmedia.tyga.host/public/tyga.cloud/landing/gpusmarket.com/cli/claude-code-stitched.mp4)
+
+*Claude Code searches, rents, runs inference, and stops the GPU — no human in the loop.*
 
 ## MCP server
 
@@ -54,7 +67,7 @@ This CLI is designed to be driven by AI coding agents (Claude Code, Cursor, Clin
 claude mcp add gpusmarket -- gpusmarket mcp-serve
 ```
 
-…or drop it into any MCP client's `.mcp.json`:
+…or drop it into any MCP client's `.mcp.json`. The MCP server runs outside your project directory, so pass your API key via the `GPUSMARKET_API_KEY` environment variable:
 
 ```json
 {
@@ -62,11 +75,14 @@ claude mcp add gpusmarket -- gpusmarket mcp-serve
     "gpusmarket": {
       "type": "stdio",
       "command": "gpusmarket",
-      "args": ["mcp-serve"]
+      "args": ["mcp-serve"],
+      "env": { "GPUSMARKET_API_KEY": "gpu_your_key_here" }
     }
   }
 }
 ```
+
+No key yet? Run `gpusmarket signup` to provision one, or grab it from your [dashboard](https://gpusmarket.com).
 
 ## Core capabilities
 
@@ -103,17 +119,19 @@ gpusmarket pool list
 
 ## Earn with your GPU
 
-<!-- HOST: host setup auto-detects the GPU, prints the host key, listing goes live -->
-[![host setup](https://prodmedia.tyga.host/public/tyga.cloud/landing/gpusmarket.com/cli/host-mac-stitched.gif)](https://prodmedia.tyga.host/public/tyga.cloud/landing/gpusmarket.com/cli/host-mac-stitched.mp4)
+Your GPU earns nothing while it sits idle. List it in one command — the CLI auto-detects your hardware, prints your host key, and the listing goes live in minutes. You keep **90%** of every rental, paid out to your Stripe account automatically. No port forwarding, no static IP, no open inbound ports.
 
-Got a GPU sitting idle? List it in one command:
+**Three ways to host** (click any demo for the full-res video):
+
+| Mac (Apple Silicon) | NVIDIA GPU | Docker sidecar |
+|---|---|---|
+| [![host on mac](https://prodmedia.tyga.host/public/tyga.cloud/landing/gpusmarket.com/cli/host-mac-stitched.gif)](https://prodmedia.tyga.host/public/tyga.cloud/landing/gpusmarket.com/cli/host-mac-stitched.mp4) | [![host on nvidia gpu](https://prodmedia.tyga.host/public/tyga.cloud/landing/gpusmarket.com/cli/host-gpu-stitched.gif)](https://prodmedia.tyga.host/public/tyga.cloud/landing/gpusmarket.com/cli/host-gpu-stitched.mp4) | [![host via docker](https://prodmedia.tyga.host/public/tyga.cloud/landing/gpusmarket.com/cli/host-docker-stitched.gif)](https://prodmedia.tyga.host/public/tyga.cloud/landing/gpusmarket.com/cli/host-docker-stitched.mp4) |
+| `gpusmarket host setup` | auto-detects CUDA + VRAM | `docker compose up -d` |
 
 ```bash
 gpusmarket host setup          # auto-detects your GPU, creates the listing
 npx gpusmarket-host --key KEY  # connect your machine — no port forwarding needed
 ```
-
-You keep 90% of every rental, paid out to your Stripe account automatically.
 
 ## Commands
 
@@ -130,9 +148,20 @@ You keep 90% of every rental, paid out to your Stripe account automatically.
 
 Run `gpusmarket --help` for the full reference, flags included.
 
+## Features
+
+- **Search** — filter the marketplace by GPU, price, or the exact model you need to run.
+- **Rent** — one command returns an OpenAI/Ollama-compatible endpoint + key, ready for inference.
+- **Chat** — stream inference straight through your rental, or pipe from stdin.
+- **Pools** — put several rentals behind one endpoint and load-balance across them.
+- **Host** — list your own GPU (Mac, NVIDIA, or Docker) and keep 90% of every rental.
+- **Per-second billing** — receipts for everything, $0.50 minimum per rental, no subscriptions.
+- **MCP server** — 32 tools over stdio for Claude Code, Cursor, Cline, Windsurf, any MCP client.
+- **Agent-native** — `--json` everywhere plus `init --agent-schema` so agents never guess a flag.
+
 ## Why this exists
 
-Renting a GPU should be as fast as `npm install`. Not a signup form, a quota request, a support ticket, and a $50 minimum. GPUsMarket is a marketplace where anyone can list an idle GPU and anyone — or any agent — can rent it by the second. This CLI is the agent-native front door to that marketplace.
+Renting a GPU should be as fast as `npm install`. Not a signup form, a quota request, a support ticket, and a $50 minimum. GPUsMarket is a marketplace where anyone can list an idle GPU and anyone — or any agent — can rent it by the second. This CLI is the agent-native front door to that marketplace. It's early and moving fast: if something's rough or missing, [open an issue](https://github.com/jyswee/gpusmarket/issues) — we read every one.
 
 ## Documentation
 
