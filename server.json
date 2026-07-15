@@ -6,7 +6,7 @@
     "url": "https://github.com/jyswee/gpusmarket",
     "source": "github"
   },
-  "version": "2.4.6",
+  "version": "2.4.7",
   "websiteUrl": "https://gpusmarket.com",
   "packages": [
     {
@@ -30,6 +30,20 @@
           "name": "GPUSMARKET_API_KEY",
           "description": "GPUsMarket API key (gpu_...). Required: the MCP server exits without one. Get a key with 'gpusmarket signup' or from your dashboard.",
           "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "sse",
+      "url": "https://mcp.gpusmarket.com/sse",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer token using your GPUsMarket API key: 'Bearer gpu_...'. Optional: without one the server starts in onboarding mode and can self-signup via the gpusmarket_signup tool.",
+          "isRequired": false,
           "isSecret": true
         }
       ]
