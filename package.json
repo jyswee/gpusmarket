@@ -1,6 +1,6 @@
 {
   "name": "gpusmarket",
-  "version": "2.4.6",
+  "version": "2.4.7",
   "mcpName": "io.github.jyswee/gpusmarket",
   "description": "Rent real GPUs from the terminal. Agent-first CLI + built-in MCP server for GPUsMarket \u2014 signup, rent, chat, pool. Per-second billing, $0.50 minimum per rental.",
   "bin": {
