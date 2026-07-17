@@ -6,14 +6,14 @@
     "url": "https://github.com/jyswee/gpusmarket",
     "source": "github"
   },
-  "version": "2.4.7",
+  "version": "2.4.8",
   "websiteUrl": "https://gpusmarket.com",
   "packages": [
     {
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "gpusmarket",
-      "version": "2.4.6",
+      "version": "2.4.7",
       "transport": {
         "type": "stdio"
       },
