@@ -144,6 +144,7 @@ npx gpusmarket-host --key KEY  # connect your machine — no port forwarding nee
 | `chat` | Inference through your rental (streams, or pipe from stdin) |
 | `pool create/list/add/remove` | Load-balance several rentals behind one key |
 | `host setup` | List **your own** GPU for rent (auto-detects hardware) |
+| `benchmark submit` | Run the gmbench/1 suite on your local Ollama + publish measured speed to your listing |
 | `mcp-serve` | Start the MCP server (stdio) |
 
 Run `gpusmarket --help` for the full reference, flags included.
